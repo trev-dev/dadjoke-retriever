@@ -3,11 +3,13 @@ import axios from 'axios';
 /**
  * @typedef {Object} JokeData
  * @property {string} id
- * @property {string} joke 
+ * @property {string} joke
  * @property {number} status
  */
 
 /**
+ * Retrieve one high quality joke.
+ *
  * @returns {JokeData} A joke from icanhazdadjoke.com
  */
 export async function getJoke() {
@@ -17,4 +19,21 @@ export async function getJoke() {
     }
   });
   return data;
+}
+
+/**
+ * Get any number of bad-...I mean *rad* jokes.
+ *
+ * @param {number} count
+ * @returns {Promise<JokeData[]>}
+ */
+export async function getJokes(count) {
+  let promises = [];
+
+  let i = 0;
+  for (i; i < count; i++) {
+    promises.push(getJoke());
+  }
+
+  return Promise.all(promises)
 }

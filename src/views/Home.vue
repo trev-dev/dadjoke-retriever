@@ -7,8 +7,12 @@
     </v-row>
     <v-row>
       <v-col class="d-flex align-center justify-center">
-        <v-btn class="mr-2" prepend-icon="mdi-thumb-up" @click="getJokes">Yes</v-btn>
-        <v-btn v-if="!jokesAreLoaded" class="ml-2" prepend-icon="mdi-thumb-down" @click="getJokes">
+        <v-btn class="mr-2" prepend-icon="mdi-thumb-up" @click="updateLoadedJokes">Yes</v-btn>
+        <v-btn
+          v-if="!jokesAreLoaded"
+          class="ml-2"
+          prepend-icon="mdi-thumb-down"
+          @click="updateLoadedJokes">
           No Thanks
         </v-btn>
         <v-btn v-else class="ml-2" prepend-icon="mdi-emoticon-sad" @click="makeItWorse">
@@ -46,7 +50,7 @@
 
 <script setup>
 import { ref, computed } from 'vue';
-import { getJoke } from '../lib/dadjoke';
+import { getJokes } from '../lib/dadjoke';
 
 const loading = ref(false);
 const jokeCount = ref(5);
@@ -92,24 +96,15 @@ function getRandomArrayValue(arr) {
   return arr[Math.floor(Math.random() * arr.length)];
 }
 
-async function getJokes() {
-  let jokes = [];
+async function updateLoadedJokes() {
   loading.value = true;
-
-  let i = 0;
-  for (i; i < jokeCount.value; i++) {
-    jokes.push(getJoke());
-  }
-
-  Promise.all(jokes).then(j => {
-    jokesLoaded.value = j;
-    loading.value = false;
-  });
+  jokesLoaded.value = await getJokes(jokeCount.value);
+  loading.value = false;
 }
 
 function makeItWorse() {
   jokeCount.value += 2;
-  getJokes();
+  updateLoadedJokes();
 }
 </script>
 
