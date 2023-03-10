@@ -24,10 +24,11 @@ export async function getJoke() {
 /**
  * Get any number of bad-...I mean *rad* jokes.
  *
- * @param {number} count
- * @returns {Promise<JokeData[]>}
+ * @param {number} count - The number of jokes to get
+ * @returns {Promise<JokeData[]>} - A promise of an array of joke objects
  */
 export async function getJokes(count) {
+  /** @type {JokeData[]} */
   let promises = [];
 
   let i = 0;
