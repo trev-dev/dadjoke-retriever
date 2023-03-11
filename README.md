@@ -1,57 +1,37 @@
-# base
+# Dad joke retriever
+
+A merciles front end for unrelenting dad jokes.  I made this so that I could
+practice a little bit with new Vue 3 and Vuetify 3 features.
+
+![Screenshot](./example.png)
 
 ## Project setup
 
 ```
-# yarn
-yarn
-
-# npm
 npm install
-
-# pnpm
-pnpm install
 ```
 
 ### Compiles and hot-reloads for development
 
 ```
-# yarn
-yarn dev
-
 # npm
 npm run dev
-
-# pnpm
-pnpm dev
 ```
 
 ### Compiles and minifies for production
 
 ```
-# yarn
-yarn build
-
 # npm
 npm run build
-
-# pnpm
-pnpm build
 ```
 
 ### Lints and fixes files
 
 ```
-# yarn
-yarn lint
-
 # npm
 npm run lint
-
-# pnpm
-pnpm lint
 ```
 
-### Customize configuration
+### Customize Vite configuration
 
 See [Configuration Reference](https://vitejs.dev/config/).
