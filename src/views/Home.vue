@@ -52,9 +52,10 @@
 import { ref, computed } from 'vue';
 import { getJokes } from '../lib/dadjoke';
 
+/** @type Ref<import('../lib/dadjoke').JokeData> */
+const jokesLoaded = ref([]);
 const loading = ref(false);
 const jokeCount = ref(5);
-const jokesLoaded = ref([]);
 const jokesAreLoaded = computed(() => jokesLoaded.value.length > 0);
 
 const sentiments = [
