@@ -51,6 +51,7 @@
 <script setup>
 import { ref, computed } from 'vue';
 import { getJokes } from '../lib/dadjoke';
+import { getRandomArrayValue } from '../lib/utils';
 
 /** @type Ref<import('../lib/dadjoke').JokeData> */
 const jokesLoaded = ref([]);
@@ -92,17 +93,6 @@ const icons = [
   'mdi-octagon',
   'mdi-thumb-down'
 ];
-
-/**
- * Get a random value from an array.
- *
- * @template T
- * @param {Array<T>} arr
- * @returns {T} a random array index value
- */
-function getRandomArrayValue(arr) {
-  return arr[Math.floor(Math.random() * arr.length)];
-}
 
 async function updateLoadedJokes() {
   loading.value = true;
